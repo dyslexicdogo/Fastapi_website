@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="banner-container">
+  <div class="banner">
+    
+    {% if is_today %}
+
+    <canvas id="confetti"></canvas>
+
+    <h1 style="font-size: 2rem; color: #2c3e50;">
+        🎉 Today is the day to apply for Scottish citizenship! 🎉
+    </h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+    setInterval(() => {
+
+        confetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 70,
+            origin: { x: 0 }
+        });
+
+        confetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 70,
+            origin: { x: 1 }
+        });
+
+    }, 250);
+
+</script>
+
+{% else %}
+            <!-- This shows every other day -->
+            <h1>Countdown to my citizenship application</h1>
+            <div class="countdown-text">
+                {{ months }} months {{ days }} days remaining
+            </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
